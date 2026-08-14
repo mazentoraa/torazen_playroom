@@ -48,7 +48,8 @@ The schema lives in `supabase/migrations/` and covers six tables: `profiles`, `q
 1. `npm install`
 2. Create a Supabase project and apply the migrations in `supabase/migrations/`.
 3. Fill in `.env` (see `.env.example`-style values in the current `.env`: project URL + publishable/anon key).
-4. `npm run dev` → open http://localhost:3000
+4. (Optional) To enable **AI quiz generation** (`✨ Generate with AI` on the teacher dashboard / pack editor), set `GOOGLE_GENERATIVE_AI_API_KEY` (Gemini) or `OPENAI_API_KEY` (OpenAI). Options: `AI_MODEL` (defaults: `gemini-3.6-flash` / `gpt-4o-mini`), `AI_PROVIDER` (`auto` | `google` | `openai`), or `AI_BASE_URL` for a compatible proxy.
+5. `npm run dev` → open http://localhost:3000
 
 ## Notes for collaborators
 

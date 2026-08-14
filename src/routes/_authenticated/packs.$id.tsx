@@ -25,6 +25,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
 import { MISSION_TYPES, typeMeta, type Mission, type MissionType } from "@/lib/missions";
 import { downloadFile, MARKDOWN_TEMPLATE, parseMarkdown, toMarkdown, type ParsedMission } from "@/lib/markdown";
+import { AiGeneratorDialog } from "@/components/ai/AiGeneratorDialog";
 import type { QuizPack } from "@/lib/db";
 
 export const Route = createFileRoute("/_authenticated/packs/$id")({
@@ -168,6 +169,7 @@ function PackEditor() {
           </div>
           <div className="flex flex-wrap gap-2">
             <ImportDialog pending={importMissions.isPending} onImport={(parsed, replace) => importMissions.mutate({ parsed, replace })} />
+            <AiGeneratorDialog mode="append" packId={id} existingCount={list.length} />
             <Button
               variant="outline"
               className="rounded-full font-bold"

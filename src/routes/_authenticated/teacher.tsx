@@ -25,6 +25,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useI18n } from "@/lib/i18n";
 import { useAuth } from "@/hooks/useAuth";
 import { usePendingAction } from "@/hooks/usePendingAction";
+import { AiGeneratorDialog } from "@/components/ai/AiGeneratorDialog";
 import { generateCode, TEAM_COLORS, type GameSession, type QuizPack } from "@/lib/db";
 
 export const Route = createFileRoute("/_authenticated/teacher")({
@@ -144,7 +145,8 @@ function TeacherDashboard() {
           </TabsList>
 
           <TabsContent value="packs" className="mt-6">
-            <div className="mb-4 flex justify-end">
+            <div className="mb-4 flex flex-wrap justify-end gap-2">
+              <AiGeneratorDialog mode="new-pack" />
               <NewPackDialog pending={createPack.isPending} onCreate={(v) => createPack.mutate(v)} />
             </div>
             {packs.data?.length === 0 && <p className="text-muted-foreground">{t("noPacks")}</p>}
